@@ -1,3 +1,5 @@
+![LinearClipper](./asssets/LinearClipperBanner.jpg)
+
 # LinearClipper
 
 LinearClipper is a Browser extension that allows users to quickly copy and paste text snippets from web pages. It provides a simple and efficient way to manage clipboard content.
@@ -13,7 +15,7 @@ LinearClipper is a Browser extension that allows users to quickly copy and paste
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/firefox-extension.git
+   git clone https://github.com/nnivxix/linear-clipper.git
    ```
 
 2. Open Firefox and navigate to `about:debugging`.
