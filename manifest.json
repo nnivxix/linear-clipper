@@ -4,6 +4,7 @@
   "version": "0.1",
   "description": "Copy Issue Links from Linear to Clipboard",
   "permissions": [
+    "tabs",
     "activeTab",
     "storage",
     "clipboardWrite"
@@ -31,6 +32,5 @@
         "content_scripts/content.js"
       ]
     }
-  ],
-  "options_page": "options/options.html"
+  ]
 }
