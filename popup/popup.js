@@ -1,39 +1,93 @@
-document.addEventListener("DOMContentLoaded", async function () {
-	const button = document.getElementById("action-button");
-	const container = document.getElementById("popup-container");
+/**
+ * @returns {'firefox' | 'chrome' | 'unknown'}
+ */
+function getBrowserName() {
+	if (
+		typeof browser !== "undefined" &&
+		typeof browser.runtime !== "undefined"
+	) {
+		return "firefox";
+	} else if (
+		typeof chrome !== "undefined" &&
+		typeof chrome.runtime !== "undefined"
+	) {
+		return "chrome";
+	} else {
+		return "unknown";
+	}
+}
 
-	const tabs = await browser.tabs.query({ active: true, currentWindow: true });
-	const currentTab = tabs[0];
-	const currentURL = currentTab.url;
-	const urlParts = currentURL.split("/");
+function getCurrentTab(browserName) {
+	return new Promise((resolve, reject) => {
+		if (browserName === "firefox") {
+			browser.tabs
+				.query({ active: true, currentWindow: true })
+				.then((tabs) => {
+					if (!tabs || tabs.length === 0) {
+						return reject(new Error("No active tab found"));
+					}
+					resolve(tabs[0]);
+				})
+				.catch(reject);
+		} else if (browserName === "chrome") {
+			chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
+				if (chrome.runtime.lastError) {
+					return reject(chrome.runtime.lastError);
+				}
+				if (!tabs || tabs.length === 0) {
+					return reject(new Error("No active tab found"));
+				}
+				resolve(tabs[0]);
+			});
+		} else {
+			reject(new Error("Unknown browser"));
+		}
+	});
+}
 
-	// check if currentURL is liner.app
-	if (currentURL.includes("linear.app")) {
-		container.innerHTML = "<p>The Issue copied!</p>";
-		const issueId = urlParts[5];
+function handleLinearIssueCopy(container, url) {
+	const urlParts = url.split("/");
+	const issueId = urlParts[5];
+	const markdownText = `[${issueId}](${url})`;
 
-		const markdownText = `[${issueId}](${currentURL})`;
+	// Check if the issue ID is valid
+	if (!issueId || issueId.length < 3 || urlParts[4] !== "issue") {
+		container.innerHTML = "<p id='error-message'>Issue Not Found</p>";
+		return;
+	}
 
-		//copy the issue ID to clipboard
+	// Slight delay to ensure popup has focus
+	setTimeout(() => {
 		navigator.clipboard
 			.writeText(markdownText)
 			.then(() => {
+				container.innerHTML = "<p id='success-message'>The Issue copied!</p>";
 				console.log("Issue ID copied to clipboard:", issueId);
 			})
 			.catch((err) => {
+				container.innerHTML =
+					"<p id='error-message'>Oops, something went wrong!</p>";
 				console.error("Failed to copy issue ID:", err);
 			});
+	}, 200);
+}
 
-		return;
-	} else {
-		container.innerHTML = "<p>This is extension only works on Linear.app</p>";
-	}
+document.addEventListener("DOMContentLoaded", async function () {
+	const container = document.getElementById("popup-container");
+	const browserName = getBrowserName();
 
-	button.addEventListener("click", function () {
-		if (issueId) {
-			console.log("Button clicked with issue ID:", issueId);
+	try {
+		const currentTab = await getCurrentTab(browserName);
+		const currentURL = currentTab.url;
+
+		if (currentURL.includes("linear.app")) {
+			handleLinearIssueCopy(container, currentURL);
 		} else {
-			console.log("No issue ID found.");
+			container.innerHTML =
+				"<p id='error-message'>This extension only works on Linear.app</p>";
 		}
-	});
+	} catch (err) {
+		console.error("Failed to get current tab or browser context:", err);
+		container.innerHTML = "<p id='error-message'>Failed to get tab info.</p>";
+	}
 });

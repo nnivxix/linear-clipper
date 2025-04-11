@@ -2,7 +2,7 @@
 
 # LinearClipper
 
-LinearClipper is a browser extension that streamlines copying and pasting text snippets from Linear.app. It offers a simple and efficient way to manage clipboard content, especially when working with Markdown.
+Linear Clipper is a browser extension that streamlines the process of copying and pasting issue links from Linear.app. It offers a simple and efficient way to manage clipboard content, especially when working with Markdown.
 
 ## Features
 
@@ -10,7 +10,7 @@ LinearClipper is a browser extension that streamlines copying and pasting text s
 - Paste copied snippets directly into text fields or documents.
 <!-- - Manage and organize copied snippets for easy access. -->
 
-## Installation
+## Fiefox Installation
 
 1. Clone the repository:
 
@@ -22,7 +22,19 @@ LinearClipper is a browser extension that streamlines copying and pasting text s
 3. Click on "This Firefox" and then "Load Temporary Add-on".
 4. Select the `manifest.json` file from the cloned repository.
 
-## How To Build
+## Chromium Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/nnivxix/linear-clipper.git
+   ```
+
+2. Open Chromium and navigate to `chrome://extensions`.
+3. Enable "Developer mode" in the top right corner.
+4. Click on "Load unpacked" and select the cloned repository directory.
+
+## How To Build (Firefox)
 
 1. Install [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/)
 2. Build the extension
@@ -32,8 +44,10 @@ LinearClipper is a browser extension that streamlines copying and pasting text s
 
 ## Usage
 
-- Click on the extension icon in the toolbar to open the popup.
-- Access the options page to configure settings.
+- Once installed, the Linear Clipper extension icon will appear in your browser's toolbar.
+- When you're on a Linear page, simply click the extension icon.
+- The extension will automatically detect and copy the relevant text snippet to your clipboard.
+- You can then paste the snippet into any text field or document.
 
 ## Contributing
 

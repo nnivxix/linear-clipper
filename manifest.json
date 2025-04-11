@@ -4,6 +4,7 @@
   "version": "0.1",
   "description": "Copy Issue Links from Linear to Clipboard",
   "permissions": [
+    "tabs",
     "activeTab",
     "storage",
     "clipboardWrite"
@@ -17,9 +18,9 @@
   "browser_action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
-      "48": "icons/icon-48.webp",
-      "96": "icons/icon-96.webp",
-      "128": "icons/icon-128.webp"
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png",
+      "128": "icons/icon-128.png"
     }
   },
   "content_scripts": [
@@ -31,6 +32,5 @@
         "content_scripts/content.js"
       ]
     }
-  ],
-  "options_page": "options/options.html"
+  ]
 }
