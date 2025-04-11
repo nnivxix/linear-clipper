@@ -17,6 +17,12 @@ function getBrowserName() {
 	}
 }
 
+/**
+ *
+ * @param {'firefox' | 'chrome' | 'unknown'} browserName
+ * @returns
+ */
+
 function getCurrentTab(browserName) {
 	return new Promise((resolve, reject) => {
 		if (browserName === "firefox") {
@@ -61,13 +67,13 @@ function handleLinearIssueCopy(container, url) {
 		navigator.clipboard
 			.writeText(markdownText)
 			.then(() => {
-				container.innerHTML = "<p id='success-message'>The Issue copied!</p>";
-				console.log("Issue ID copied to clipboard:", issueId);
+				container.innerHTML = "<p id='success-message'>Issue copied!</p>";
+				// console.log("Issue ID copied to clipboard:", issueId);
 			})
 			.catch((err) => {
 				container.innerHTML =
 					"<p id='error-message'>Oops, something went wrong!</p>";
-				console.error("Failed to copy issue ID:", err);
+				// console.error("Failed to copy issue ID:", err);
 			});
 	}, 200);
 }
@@ -87,7 +93,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 				"<p id='error-message'>This extension only works on Linear.app</p>";
 		}
 	} catch (err) {
-		console.error("Failed to get current tab or browser context:", err);
+		// console.error("Failed to get current tab or browser context:", err);
 		container.innerHTML = "<p id='error-message'>Failed to get tab info.</p>";
 	}
 });
