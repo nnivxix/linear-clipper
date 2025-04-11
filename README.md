@@ -2,7 +2,7 @@
 
 # LinearClipper
 
-LinearClipper is a browser extension that streamlines copying and pasting text snippets from Linear.app. It offers a simple and efficient way to manage clipboard content, especially when working with Markdown.
+Linear Clipper is a browser extension that streamlines the process of copying and pasting issue links from Linear.app. It offers a simple and efficient way to manage clipboard content, especially when working with Markdown.
 
 ## Features
 

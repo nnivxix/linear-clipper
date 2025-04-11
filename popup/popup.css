@@ -28,3 +28,12 @@ p {
     font-size: 14px;
     color: #666;
 }
+
+#error-message {
+    color: red;
+    margin-top: 5px;
+}
+#success-message {
+    color: green;
+    margin-top: 5px;
+}

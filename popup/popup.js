@@ -50,16 +50,23 @@ function handleLinearIssueCopy(container, url) {
 	const issueId = urlParts[5];
 	const markdownText = `[${issueId}](${url})`;
 
+	// Check if the issue ID is valid
+	if (!issueId || issueId.length < 3 || urlParts[4] !== "issue") {
+		container.innerHTML = "<p id='error-message'>Issue Not Found</p>";
+		return;
+	}
+
 	// Slight delay to ensure popup has focus
 	setTimeout(() => {
 		navigator.clipboard
 			.writeText(markdownText)
 			.then(() => {
-				container.innerHTML = "<p>The Issue copied!</p>";
+				container.innerHTML = "<p id='success-message'>The Issue copied!</p>";
 				console.log("Issue ID copied to clipboard:", issueId);
 			})
 			.catch((err) => {
-				container.innerHTML = "<p>Oops, something went wrong!</p>";
+				container.innerHTML =
+					"<p id='error-message'>Oops, something went wrong!</p>";
 				console.error("Failed to copy issue ID:", err);
 			});
 	}, 200);
@@ -76,10 +83,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 		if (currentURL.includes("linear.app")) {
 			handleLinearIssueCopy(container, currentURL);
 		} else {
-			container.innerHTML = "<p>This extension only works on Linear.app</p>";
+			container.innerHTML =
+				"<p id='error-message'>This extension only works on Linear.app</p>";
 		}
 	} catch (err) {
 		console.error("Failed to get current tab or browser context:", err);
-		container.innerHTML = "<p>Failed to get tab info.</p>";
+		container.innerHTML = "<p id='error-message'>Failed to get tab info.</p>";
 	}
 });
