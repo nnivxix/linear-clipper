@@ -1,7 +1,13 @@
 {
   "manifest_version": 3,
   "name": "LinearClipper",
-  "version": "0.2",
+  "version": "0.3",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{b4510bfd-f252-4447-b922-52ec94f7a4f6}",
+      "strict_min_version": "109.0"
+    }
+  },
   "description": "Copy Issue Links from Linear to Clipboard",
   "permissions": [
     "tabs",
