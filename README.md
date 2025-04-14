@@ -12,7 +12,7 @@ Linear Clipper is a browser extension that streamlines the process of copying an
 
 <p align="center">
   <!-- <a href="https://chrome.google.com/webstore/detail/material-icons-for-github/bggfcpfjbdkhfhfmkjpbhnkhnpjjeomc"><img src="https://github.com/material-extensions/material-icons-browser-extension/raw/main/assets/chrome-web-store.png"></a> -->
-  <a href="https://addons.mozilla.org/en-US/firefox/addon/linearclipper/"><img src="https://github.com/nnivxix/linear-clipper/assets/firefox-addons.png"></a>
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/linearclipper/" target="_blank"><img src="https://raw.githubusercontent.com/nnivxix/linear-clipper/refs/heads/main/asssets/firefox-addons.png"></a>
 </p>
 
 ## Fiefox Installation
