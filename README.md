@@ -10,6 +10,11 @@ Linear Clipper is a browser extension that streamlines the process of copying an
 - Paste copied snippets directly into text fields or documents.
 <!-- - Manage and organize copied snippets for easy access. -->
 
+<p align="center">
+  <!-- <a href="https://chrome.google.com/webstore/detail/material-icons-for-github/bggfcpfjbdkhfhfmkjpbhnkhnpjjeomc"><img src="https://github.com/material-extensions/material-icons-browser-extension/raw/main/assets/chrome-web-store.png"></a> -->
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/linearclipper/"><img src="https://github.com/nnivxix/linear-clipper/assets/firefox-addons.png"></a>
+</p>
+
 ## Fiefox Installation
 
 1. Clone the repository:
