@@ -4,11 +4,7 @@
 
 Linear Clipper is a browser extension that streamlines the process of copying and pasting issue links from Linear.app. It offers a simple and efficient way to manage clipboard content, especially when working with Markdown.
 
-## Features
-
-- Copy text snippets from web pages with a single click.
-- Paste copied snippets directly into text fields or documents.
-<!-- - Manage and organize copied snippets for easy access. -->
+## Downloads
 
 <p align="center">
   <a href="https://chromewebstore.google.com/detail/jgmajlkcaikombconmillmijpmgmmmkk?utm_source=item-share-cb"><img src="https://raw.githubusercontent.com/nnivxix/linear-clipper/refs/heads/main/asssets/chrome-web-store.png"></a>
