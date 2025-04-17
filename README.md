@@ -11,7 +11,7 @@ Linear Clipper is a browser extension that streamlines the process of copying an
 <!-- - Manage and organize copied snippets for easy access. -->
 
 <p align="center">
-  <!-- <a href="https://chromewebstore.google.com/detail/jgmajlkcaikombconmillmijpmgmmmkk?utm_source=item-share-cb"><img src="https://raw.githubusercontent.com/nnivxix/linear-clipper/refs/heads/main/asssets/chrome-web-store.png"></a> -->
+  <a href="https://chromewebstore.google.com/detail/jgmajlkcaikombconmillmijpmgmmmkk?utm_source=item-share-cb"><img src="https://raw.githubusercontent.com/nnivxix/linear-clipper/refs/heads/main/asssets/chrome-web-store.png"></a>
   <a href="https://addons.mozilla.org/en-US/firefox/addon/linearclipper/" target="_blank"><img src="https://raw.githubusercontent.com/nnivxix/linear-clipper/refs/heads/main/asssets/firefox-addons.png"></a>
 </p>
 
