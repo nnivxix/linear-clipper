@@ -9,7 +9,7 @@ export const STATUS_MESSAGES = {
     class: "",
   },
   SUCCESS: {
-    message: "Text copied to clipboard!",
+    message: "Issue copied!",
     class: "success",
   },
   COPY_FAILED: {
@@ -18,6 +18,10 @@ export const STATUS_MESSAGES = {
   },
   NOT_LINEAR: {
     message: "This extension only works with Linear issues.",
+    class: "error",
+  },
+  NOT_ISSUE: {
+    message: "Issue not found",
     class: "error",
   },
   CLIPBOARD_NOT_SUPPORTED: {

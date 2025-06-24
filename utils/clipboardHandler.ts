@@ -21,6 +21,10 @@ export const handleClipboardCopy = async ({
     return { status: STATUS_MESSAGES.NOT_LINEAR };
   }
 
+  if (source.split("/").at(4) !== "issue") {
+    return { status: STATUS_MESSAGES.NOT_ISSUE };
+  }
+
   const { markdownLink } = createIssue(source);
 
   // Handle clipboard copy based on browser support
