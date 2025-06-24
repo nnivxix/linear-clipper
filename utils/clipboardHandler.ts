@@ -21,12 +21,12 @@ export const handleClipboardCopy = async ({
     return { status: STATUS_MESSAGES.NOT_LINEAR };
   }
 
-  const { markedText } = createIssue(source);
+  const { markdownLink } = createIssue(source);
 
   // Handle clipboard copy based on browser support
   if (isSupported) {
     try {
-      await copy(markedText);
+      await copy(markdownLink);
       return { status: STATUS_MESSAGES.SUCCESS };
     } catch (error) {
       console.error("Copy error:", error);
