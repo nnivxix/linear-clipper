@@ -2,6 +2,7 @@
 import { onMounted, ref } from "vue";
 import { browser } from "wxt/browser";
 import { useClipboard } from "@vueuse/core";
+import { createIssue } from "@/utils/createIssue";
 
 const tab = await browser.tabs.query({ active: true, currentWindow: true });
 const source = tab.at(0)?.url;
@@ -24,9 +25,7 @@ onMounted(async () => {
     return;
   }
 
-  const urlParts = source?.split("/");
-  const issueId = urlParts?.[urlParts.length - 1] || "unknown-issue";
-  const markedText = `[${issueId}](${source})`;
+  const { markedText } = createIssue(source);
 
   if (isSupported.value) {
     try {
