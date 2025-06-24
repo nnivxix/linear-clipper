@@ -3,14 +3,12 @@ import { onMounted, ref } from "vue";
 import { browser } from "wxt/browser";
 import { useClipboard } from "@vueuse/core";
 import { createIssue } from "@/utils/createIssue";
+import { STATUS_MESSAGES, type StatusMessage } from "@/constants/status";
 
 const tab = await browser.tabs.query({ active: true, currentWindow: true });
 const source = tab.at(0)?.url;
 
-const status = ref({
-  message: "Copying text...",
-  class: "",
-});
+const status = ref<StatusMessage>(STATUS_MESSAGES.COPYING);
 
 const { copy, isSupported } = useClipboard({
   source,
@@ -18,10 +16,7 @@ const { copy, isSupported } = useClipboard({
 
 onMounted(async () => {
   if (!source?.includes("linear.app")) {
-    status.value = {
-      message: "This extension only works with Linear issues.",
-      class: "error",
-    };
+    status.value = STATUS_MESSAGES.NOT_LINEAR;
     return;
   }
 
@@ -30,22 +25,13 @@ onMounted(async () => {
   if (isSupported.value) {
     try {
       await copy(markedText);
-      status.value = {
-        message: "Text copied to clipboard!",
-        class: "success",
-      };
+      status.value = STATUS_MESSAGES.SUCCESS;
     } catch (error) {
-      status.value = {
-        message: "Failed to copy text.",
-        class: "error",
-      };
+      status.value = STATUS_MESSAGES.COPY_FAILED;
       console.error("Copy error:", error);
     }
   } else {
-    status.value = {
-      message: "Clipboard API is not supported in this browser.",
-      class: "error",
-    };
+    status.value = STATUS_MESSAGES.CLIPBOARD_NOT_SUPPORTED;
   }
 });
 </script>
