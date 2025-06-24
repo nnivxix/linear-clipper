@@ -16,8 +16,10 @@ Linear Clipper is a browser extension that streamlines the process of copying an
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/nnivxix/linear-clipper.git
+   pnpm build:firefox
    ```
+
+   This will create a `.output/firefox-mv2` directory with the necessary files.
 
 2. Open Firefox and navigate to `about:debugging`.
 3. Click on "This Firefox" and then "Load Temporary Add-on".
@@ -25,23 +27,17 @@ Linear Clipper is a browser extension that streamlines the process of copying an
 
 ## Chromium Installation
 
-1. Clone the repository:
+1. Build the extension using the following command:
 
    ```bash
-   git clone https://github.com/nnivxix/linear-clipper.git
+   pnpm build
    ```
+
+   This will create a `.output/chrome-mv3` directory with the necessary files.
 
 2. Open Chromium and navigate to `chrome://extensions`.
 3. Enable "Developer mode" in the top right corner.
-4. Click on "Load unpacked" and select the cloned repository directory.
-
-## How To Build (Firefox)
-
-1. Install [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/)
-2. Build the extension
-   ```bash
-   web-ext build
-   ```
+4. Click on "Load unpacked" and select the builded directory.
 
 ## Usage
 
