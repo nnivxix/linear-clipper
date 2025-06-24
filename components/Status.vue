@@ -6,7 +6,10 @@ import { useClipboard } from "@vueuse/core";
 const tab = await browser.tabs.query({ active: true, currentWindow: true });
 const source = tab.at(0)?.url;
 
-const status = ref("");
+const status = ref({
+  message: "Copying text...",
+  class: "",
+});
 
 const { copy, isSupported } = useClipboard({
   source,
@@ -14,26 +17,39 @@ const { copy, isSupported } = useClipboard({
 
 onMounted(async () => {
   if (!source?.includes("linear.app")) {
-    status.value = "This extension only works on linear.app";
+    status.value = {
+      message: "This extension only works with Linear issues.",
+      class: "error",
+    };
     return;
   }
-  const urlParts = source.split("/");
-  const issueId = urlParts[5];
+
+  const urlParts = source?.split("/");
+  const issueId = urlParts?.[urlParts.length - 1] || "unknown-issue";
   const markedText = `[${issueId}](${source})`;
 
   if (isSupported.value) {
     try {
       await copy(markedText);
-      status.value = "Text copied to clipboard!";
+      status.value = {
+        message: "Text copied to clipboard!",
+        class: "success",
+      };
     } catch (error) {
-      status.value = "Failed to copy text.";
+      status.value = {
+        message: "Failed to copy text.",
+        class: "error",
+      };
       console.error("Copy error:", error);
     }
   } else {
-    status.value = "Clipboard API not supported.";
+    status.value = {
+      message: "Clipboard API is not supported in this browser.",
+      class: "error",
+    };
   }
 });
 </script>
 <template>
-  <h1>{{ status }}</h1>
+  <h1 :class="status.class">{{ status.message }}</h1>
 </template>
