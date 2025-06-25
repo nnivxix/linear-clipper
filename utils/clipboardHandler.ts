@@ -3,6 +3,7 @@ import { STATUS_MESSAGES, type StatusMessage } from "@/constants/status";
 
 export interface ClipboardHandlerParams {
   source: string | undefined;
+  title?: string;
   copy: (text: string) => Promise<void>;
   isSupported: boolean;
 }
@@ -13,6 +14,7 @@ export interface ClipboardHandlerResult {
 
 export const handleClipboardCopy = async ({
   source,
+  title,
   copy,
   isSupported,
 }: ClipboardHandlerParams): Promise<ClipboardHandlerResult> => {
@@ -25,7 +27,7 @@ export const handleClipboardCopy = async ({
     return { status: STATUS_MESSAGES.NOT_ISSUE };
   }
 
-  const { markdownLink } = createIssue(source);
+  const { markdownLink } = createIssue(source, title);
 
   // Handle clipboard copy based on browser support
   if (isSupported) {

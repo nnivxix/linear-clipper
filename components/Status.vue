@@ -7,11 +7,13 @@ import { handleClipboardCopy } from "@/utils/clipboardHandler";
 
 const tab = await browser.tabs.query({ active: true, currentWindow: true });
 const source = tab.at(0)?.url;
+const title = tab.at(0)?.title;
 const { copy, isSupported } = useClipboard({
   source,
 });
 const { status: newStatus } = await handleClipboardCopy({
   source,
+  title,
   copy,
   isSupported: isSupported.value,
 });
