@@ -1,7 +1,6 @@
 export const createIssue = (source: string, title?: string) => {
-  const urlParts = source?.split("/");
-  const issueId = urlParts?.at(5) || "unknown-issue";
-  const issueTitle = title || issueId;
+  const isComment = source.includes("#comment");
+  const issueTitle = isComment ? `Comment on ${title}` : title;
   const markdownLink = `[${issueTitle}](${source})`;
 
   return {
