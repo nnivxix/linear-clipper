@@ -20,7 +20,12 @@ export const iconSwitcher = () => {
   function updateIcon(tabId: number, url: string) {
     const isTargetSite = url.includes(TARGET_HOST);
     const iconPath = isTargetSite ? COLOR_ICON_PATH : GRAYSCALE_ICON_PATH;
-    browser.action.setIcon({ tabId, path: iconPath });
+    const action = browser.action ?? browser.browserAction;
+    if (action && action.setIcon) {
+      action.setIcon({ tabId, path: iconPath });
+    } else {
+      console.warn("No action API available for setIcon");
+    }
   }
 
   browser.tabs.onActivated.addListener(async (activeInfo) => {
