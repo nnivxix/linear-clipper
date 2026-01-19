@@ -5,7 +5,7 @@ export default defineConfig({
   modules: ["@wxt-dev/module-vue"],
   manifest: {
     name: "LinearClipper",
-    version: "0.5",
+    version: "0.6",
     description: "Copy Issue Links from Linear to Clipboard",
     permissions: ["tabs", "activeTab", "clipboardWrite"],
     browser_specific_settings: {

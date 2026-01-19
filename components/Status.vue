@@ -20,5 +20,13 @@ const { status: newStatus } = await handleClipboardCopy({
 const status = ref<StatusMessage>(newStatus);
 </script>
 <template>
-  <h1 :class="status.class">{{ status.message }}</h1>
+  <div class="wrapper-info">
+    <h1 :class="status.class">{{ status.message }}</h1>
+  </div>
 </template>
+
+<style scoped>
+.wrapper-info {
+  width: 200px;
+}
+</style>
