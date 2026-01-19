@@ -18,20 +18,17 @@ export const iconSwitcher = () => {
   const TARGET_HOST = "linear.app";
 
   function updateIcon(tabId: number, url: string) {
-    console.log("Updating icon for URL:", url);
     const isTargetSite = url.includes(TARGET_HOST);
     const iconPath = isTargetSite ? COLOR_ICON_PATH : GRAYSCALE_ICON_PATH;
     browser.action.setIcon({ tabId, path: iconPath });
   }
 
   browser.tabs.onActivated.addListener(async (activeInfo) => {
-    console.log("Tab activated:", activeInfo);
     const tab = await browser.tabs.get(activeInfo.tabId);
     updateIcon(tab.id!, tab.url || "");
   });
 
   browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    console.log("Tab updated:", tabId, changeInfo, tab);
     if (changeInfo.status === "complete" && tab.url) {
       updateIcon(tabId, tab.url);
     }
